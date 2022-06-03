@@ -1,0 +1,37 @@
+#outline {
+
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    width: 120px;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.cell {
+
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    background-color: black;
+    border: solid aqua 1px;
+}
+
+.top {
+    border-top: red solid 2px;
+}
+
+.right {
+    border-right: red solid 2px;
+}
+
+.bottom {
+    border-bottom: red solid 2px;
+}
+
+.left {
+    border-left: red solid 2px;
+}
+
+
+
+

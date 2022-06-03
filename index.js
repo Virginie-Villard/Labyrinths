@@ -1,14 +1,16 @@
-// import labyrinths from "./labyrinths";
 
-for(i = 0; i < 9; i++) {
+document.getElementById("maze").textContent = JSON.stringify(labyrinths["3"]["ex-0"], undefined, 2);
+
+
+
+const outline = document.getElementById('outline');
+
+for(let i in labyrinths["3"]["ex-0"]) {
 
     let div = document.createElement('div');
 
-    div.style.padding         = "40px";
-    div.style.flex            = "wrap";
-    div.style.width           = "1px";
-    div.style.backgroundColor = "red";
+    div.classList.add('cell');
 
-    document.body.append(div);
+    outline.append(div);
 }
 
