@@ -1,16 +1,19 @@
 
-const size = 5;
+// document.getElementsByTagName('h1').style.textAlign = "center";
+
+const size = 10;
 
 const root = document.documentElement;
 root.style.setProperty("--maze-size", size);
 
-document.getElementById("maze").textContent = JSON.stringify(labyrinths[size]["ex-0"], undefined, 2);
+document.getElementById("maze").textContent = JSON.stringify(labyrinths[size]["ex-2"], undefined, 2);
+document.getElementById("maze").style.display = "none";
 
 const outline = document.getElementById('outline');
 
-for(let i in labyrinths[size]["ex-0"]) {
+for(let i in labyrinths[size]["ex-2"]) {
 
-    let createdCell = labyrinths[size]["ex-0"][i]
+    let createdCell = labyrinths[size]["ex-2"][i]
 
     let cell = document.createElement('div');
     cell.classList.add('cell');
@@ -39,4 +42,6 @@ for(let i in labyrinths[size]["ex-0"]) {
         cell.classList.add('left');
     }
 }
+
+
 

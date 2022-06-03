@@ -5,8 +5,8 @@
 #outline {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(var(--maze-size), 40px);
-    grid-template-rows: repeat(var(--maze-size), 40px);
+    grid-template-columns: repeat(var(--maze-size), 36px);
+    grid-template-rows: repeat(var(--maze-size), 36px);
     margin: 60px auto;
     column-gap: 0;
     row-gap: 0;
@@ -16,15 +16,15 @@
 
     margin: 0;
     background-color: black;
-    border: solid #3e4f3f 1px;
+    border: solid #2e3a2e 1px;
 }
 
 .entrance {
-    background-color: #e0bf5b;
+    background-color: yellow;
 }
 
 .exit {
-    background-color: #23af23;
+    background-color: #76ff76;
 }
 
 .top {
