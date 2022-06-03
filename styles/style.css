@@ -16,23 +16,31 @@
 
     margin: 0;
     background-color: black;
-    border: solid aqua 1px;
+    border: solid #3e4f3f 1px;
+}
+
+.entrance {
+    background-color: #e0bf5b;
+}
+
+.exit {
+    background-color: #23af23;
 }
 
 .top {
-    border-top: red solid 2px;
+    border-top: #23af23 solid 2px;
 }
 
 .right {
-    border-right: red solid 2px;
+    border-right: #23af23 solid 2px;
 }
 
 .bottom {
-    border-bottom: red solid 2px;
+    border-bottom: #23af23 solid 2px;
 }
 
 .left {
-    border-left: red solid 2px;
+    border-left: #23af23 solid 2px;
 }
 
 
