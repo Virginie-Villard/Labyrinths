@@ -1,16 +1,19 @@
-#outline {
+:root {
+    --maze-size: 3;
+}
 
+#outline {
     display: grid;
-    grid-template-columns: repeat(3, 50px);
-    width: 120px;
-    margin: auto;
-    margin-top: 60px;
+    justify-content: center;
+    grid-template-columns: repeat(var(--maze-size), 40px);
+    grid-template-rows: repeat(var(--maze-size), 40px);
+    margin: 60px auto;
+    column-gap: 0;
+    row-gap: 0;
 }
 
 .cell {
 
-    width: 40px;
-    height: 40px;
     margin: 0;
     background-color: black;
     border: solid aqua 1px;
