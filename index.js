@@ -1,29 +1,38 @@
 
 // document.getElementsByTagName('h1').style.textAlign = "center";
 
-const size = 10;
+const size = 3;
+let myMaze = labyrinths[size]["ex-2"];
 
 const root = document.documentElement;
 root.style.setProperty("--maze-size", size);
 
-document.getElementById("maze").textContent = JSON.stringify(labyrinths[size]["ex-2"], undefined, 2);
+document.getElementById("maze").textContent = JSON.stringify(myMaze, undefined, 2);
 document.getElementById("maze").style.display = "none";
 
 const outline = document.getElementById('outline');
 
-for(let i in labyrinths[size]["ex-2"]) {
+let number = 0;
 
-    let createdCell = labyrinths[size]["ex-2"][i]
+for(let i in myMaze) {
+
+    let createdCell = myMaze[i]
 
     let cell = document.createElement('div');
     cell.classList.add('cell');
     outline.append(cell);
+    cell.setAttribute("id", number)
+
 
     if(createdCell.entrance == true) {
         cell.classList.add('entrance');
+        cell.innerText = 'Start';
+        cell.style.textAlign = 'center';
     }
     if(createdCell.exit) {
         cell.classList.add('exit');
+        cell.innerText = 'Exit';
+        cell.style.textAlign = 'center';
     }
 
     if(createdCell.walls[0]) {
@@ -41,7 +50,11 @@ for(let i in labyrinths[size]["ex-2"]) {
     if(createdCell.walls[3]) {
         cell.classList.add('left');
     }
+
+    number ++;
 }
+
+dfs(findEntrance())
 
 
 
