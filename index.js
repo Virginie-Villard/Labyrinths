@@ -1,7 +1,7 @@
 
 // document.getElementsByTagName('h1').style.textAlign = "center";
 
-const size = 3;
+const size = 4;
 let myMaze = labyrinths[size]["ex-2"];
 
 const root = document.documentElement;
@@ -54,7 +54,7 @@ for(let i in myMaze) {
     number ++;
 }
 
-dfs(findEntrance())
 
+console.log(dfs(findEntrance()))
 
 
