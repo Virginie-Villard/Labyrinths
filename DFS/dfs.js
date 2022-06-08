@@ -2,6 +2,10 @@ let position;
 
 // ________________________________________________________________________
 function findEntrance() {
+
+    console.log("myMaze : ")
+    console.log(myMaze);
+
     for(let cell of myMaze) {
         if(cell.entrance) {
             console.log("posX = " + cell.posX + ", posY = " + cell.posY);
@@ -80,31 +84,64 @@ function getIndexFromPosition(x, y) {
 
 // ____________________________________
 
-function dfs(vertex) { // vertex = position actuelle
-    debugger;
+// function dfs(vertex) { // vertex = position actuelle
+//     debugger;
+//
+//     if(!vertex.visited) {
+//         vertex.visited = true;
+//
+//         document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).style.backgroundColor = "#99ffeb";
+//
+//         if(vertex.exit) {
+//             return [vertex];
+//         }
+//
+//         for(let w of getNeighbours(vertex)) {
+//             let path = dfs(w)
+//
+//             if(path) {
+//                 path = path.concat(vertex);
+//                 if(vertex.entrance) {
+//                     path = path.reverse();
+//                 }
+//                 return path;
+//             }
+//         }
+//     }
+//     console.log("Undefined vertex")
+//     return
+// }
 
-    if(!vertex.visited) {
-        vertex.visited = true;
+function dfs() {
+    let vertex = findEntrance();
+    let stack = [];
+    let numberInCell = 0;
 
-        document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).style.backgroundColor = "#99ffeb";
+    stack.push(vertex);
 
-        if(vertex.exit) {
-            return [vertex];
-        }
+    while (stack.length > 0) {
+        vertex = stack.pop() // retrieves one of the cells from the stack (and removes it from the stack)
 
-        for(let w of getNeighbours(vertex)) {
-            let path = dfs(w)
+        if(!vertex.visited) {
+            vertex.visited = true;
 
-            if(path) {
+            if(vertex.exit) {
+                let path = [];
                 path = path.concat(vertex);
-                if(vertex.entrance) {
-                    path = path.reverse();
+                return path;
+            }
+
+            for(let w of getNeighbours(vertex)) {
+                if(!w.visited) {
+                    w.parent = vertex;
+                    document.getElementById(getIndexFromPosition(w.posX, w.posY)).style.backgroundColor = "#99ffeb";
+                    document.getElementById(getIndexFromPosition(w.posX, w.posY)).innerText = numberInCell.toString();
+                    stack.push(w)
+                    numberInCell ++;
                 }
-                return     path;
             }
         }
     }
-    console.log("Undefined vertex")
     return
 }
 

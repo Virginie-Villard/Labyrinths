@@ -1,7 +1,7 @@
 
 // document.getElementsByTagName('h1').style.textAlign = "center";
 
-const size = 4;
+const size = 17;
 let myMaze = labyrinths[size]["ex-2"];
 
 const root = document.documentElement;
