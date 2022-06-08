@@ -1,7 +1,7 @@
 
 // document.getElementsByTagName('h1').style.textAlign = "center";
 
-const size = 17;
+const size = 20;
 let myMaze = labyrinths[size]["ex-2"];
 
 const root = document.documentElement;
@@ -55,6 +55,11 @@ for(let i in myMaze) {
 }
 
 
-console.log(dfs(findEntrance()))
+// console.log(dfs(findEntrance()))
+
+let path = dfs(findEntrance());
+for(let p of path) {
+    document.getElementById(getIndexFromPosition(p.posX, p.posY)).style.backgroundColor = "#ebfcc5";
+}
 
 

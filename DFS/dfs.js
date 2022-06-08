@@ -3,8 +3,8 @@ let position;
 // ________________________________________________________________________
 function findEntrance() {
 
-    console.log("myMaze : ")
-    console.log(myMaze);
+    // console.log("myMaze : ")
+    // console.log(myMaze);
 
     for(let cell of myMaze) {
         if(cell.entrance) {
@@ -83,14 +83,17 @@ function getIndexFromPosition(x, y) {
 }
 
 // ____________________________________
+let numberInCell = 0;
 
 // function dfs(vertex) { // vertex = position actuelle
-//     debugger;
+//     // debugger;
 //
 //     if(!vertex.visited) {
 //         vertex.visited = true;
 //
 //         document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).style.backgroundColor = "#99ffeb";
+//         document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).innerText = numberInCell.toString();
+//         numberInCell ++;
 //
 //         if(vertex.exit) {
 //             return [vertex];
@@ -124,20 +127,26 @@ function dfs() {
 
         if(!vertex.visited) {
             vertex.visited = true;
+            document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).style.backgroundColor = "#cffaf2"; // "#99ffeb" till; "#fce3f4" pink; "#dbff8a" green;
+            document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).innerText = ''+numberInCell;
+            numberInCell ++;
 
             if(vertex.exit) {
+                debugger;
                 let path = [];
-                path = path.concat(vertex);
+                while (!vertex.entrance) {
+                    path.push(vertex);
+                    vertex = vertex.parent;
+                }
+                path.push(vertex);
                 return path;
             }
 
             for(let w of getNeighbours(vertex)) {
                 if(!w.visited) {
                     w.parent = vertex;
-                    document.getElementById(getIndexFromPosition(w.posX, w.posY)).style.backgroundColor = "#99ffeb";
-                    document.getElementById(getIndexFromPosition(w.posX, w.posY)).innerText = numberInCell.toString();
+
                     stack.push(w)
-                    numberInCell ++;
                 }
             }
         }

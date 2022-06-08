@@ -13,7 +13,7 @@
 }
 
 .cell {
-
+color: pink;
     margin: 0;
     background-color: black;
     border: solid #2e3a2e 1px;
