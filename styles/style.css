@@ -13,7 +13,7 @@
 }
 
 .cell {
-color: pink;
+    color: deeppink;
     margin: 0;
     background-color: black;
     border: solid #2e3a2e 1px;
@@ -28,19 +28,19 @@ color: pink;
 }
 
 .top {
-    border-top: #23af23 solid 2px;
+    border-top: #0c830c solid 3px;
 }
 
 .right {
-    border-right: #23af23 solid 2px;
+    border-right: #0c830c solid 3px;
 }
 
 .bottom {
-    border-bottom: #23af23 solid 2px;
+    border-bottom: #0c830c solid 3px;
 }
 
 .left {
-    border-left: #23af23 solid 2px;
+    border-left: #0c830c solid 3px;
 }
 
 

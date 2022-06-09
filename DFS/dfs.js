@@ -18,6 +18,12 @@ function findEntrance() {
 function getNeighbours(cell) {
     let myNeighbours = [];
 
+    if(!cell.walls[3]) {
+        const left = getLeft(cell);
+
+        myNeighbours.push(left);
+    }
+
     if(!cell.walls[0]) {
 
         const top = getTop(cell);
@@ -39,11 +45,7 @@ function getNeighbours(cell) {
         myNeighbours.push(down);
     }
 
-    if(!cell.walls[3]) {
-        const left = getLeft(cell);
 
-        myNeighbours.push(left);
-    }
 
     console.log("myNeighbours : ")
     console.log(myNeighbours);
@@ -85,49 +87,19 @@ function getIndexFromPosition(x, y) {
 // ____________________________________
 let numberInCell = 0;
 
-// function dfs(vertex) { // vertex = position actuelle
-//     // debugger;
-//
-//     if(!vertex.visited) {
-//         vertex.visited = true;
-//
-//         document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).style.backgroundColor = "#99ffeb";
-//         document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).innerText = numberInCell.toString();
-//         numberInCell ++;
-//
-//         if(vertex.exit) {
-//             return [vertex];
-//         }
-//
-//         for(let w of getNeighbours(vertex)) {
-//             let path = dfs(w)
-//
-//             if(path) {
-//                 path = path.concat(vertex);
-//                 if(vertex.entrance) {
-//                     path = path.reverse();
-//                 }
-//                 return path;
-//             }
-//         }
-//     }
-//     console.log("Undefined vertex")
-//     return
-// }
-
-function dfs() {
+function bfs() {
     let vertex = findEntrance();
-    let stack = [];
+    let queue = [];
     let numberInCell = 0;
 
-    stack.push(vertex);
+    queue.push(vertex);
 
-    while (stack.length > 0) {
-        vertex = stack.pop() // retrieves one of the cells from the stack (and removes it from the stack)
+    while (queue.length > 0) {
+        vertex = queue.shift() // retrieves the first cell from the stack (and removes it from the stack)
 
         if(!vertex.visited) {
             vertex.visited = true;
-            document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).style.backgroundColor = "#cffaf2"; // "#99ffeb" till; "#fce3f4" pink; "#dbff8a" green;
+            document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).style.backgroundColor = "#cffaf2";
             document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).innerText = ''+numberInCell;
             numberInCell ++;
 
@@ -146,13 +118,83 @@ function dfs() {
                 if(!w.visited) {
                     w.parent = vertex;
 
-                    stack.push(w)
+                    queue.push(w)
                 }
             }
         }
     }
     return
 }
+
+
+function dfs(vertex) { // vertex = position actuelle
+    // debugger;
+
+    if(!vertex.visited) {
+        vertex.visited = true;
+
+        document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).style.backgroundColor = "#99ffeb";
+        document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).innerText = numberInCell.toString();
+        numberInCell ++;
+
+        if(vertex.exit) {
+            return [vertex];
+        }
+
+        for(let w of getNeighbours(vertex)) {
+            let path = dfs(w)
+
+            if(path) {
+                path = path.concat(vertex);
+                if(vertex.entrance) {
+                    path = path.reverse();
+                }
+                return path;
+            }
+        }
+    }
+    console.log("Undefined vertex")
+    return
+}
+
+// function dfs() {
+//     let vertex = findEntrance();
+//     let stack = [];
+//     let numberInCell = 0;
+//
+//     stack.push(vertex);
+//
+//     while (stack.length > 0) {
+//         vertex = stack.pop() // retrieves the last cell from the stack (and removes it from the stack)
+//
+//         if(!vertex.visited) {
+//             vertex.visited = true;
+//             document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).style.backgroundColor = "#cffaf2"; // "#99ffeb" till; "#fce3f4" pink; "#d2fc72" green;
+//             document.getElementById(getIndexFromPosition(vertex.posX, vertex.posY)).innerText = ''+numberInCell;
+//             numberInCell ++;
+//
+//             if(vertex.exit) {
+//                 debugger;
+//                 let path = [];
+//                 while (!vertex.entrance) {
+//                     path.push(vertex);
+//                     vertex = vertex.parent;
+//                 }
+//                 path.push(vertex);
+//                 return path;
+//             }
+//
+//             for(let w of getNeighbours(vertex)) {
+//                 if(!w.visited) {
+//                     w.parent = vertex;
+//
+//                     stack.push(w)
+//                 }
+//             }
+//         }
+//     }
+//     return
+// }
 
 
 
