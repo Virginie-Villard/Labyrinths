@@ -1,4 +1,4 @@
-const size = 10;
+const size = 30;
 let myMaze = createMaze(size);
 
 
