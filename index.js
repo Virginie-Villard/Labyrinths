@@ -8,7 +8,7 @@ const root = document.documentElement;
 root.style.setProperty("--maze-size", size);
 
 document.getElementById("maze").textContent = JSON.stringify(myMaze, undefined, 2);
-// document.getElementById("maze").style.display = "none";
+document.getElementById("maze").style.display = "none";
 
 const outline = document.getElementById('outline');
 
@@ -21,7 +21,8 @@ for(let i in myMaze) {
     let cell = document.createElement('div');
     cell.classList.add('cell');
     outline.append(cell);
-    cell.setAttribute("id", number)
+    cell.setAttribute("id", number);
+    cell.innerText = createdCell.zone;
 
 
     if(createdCell.entrance == true) {
