@@ -1,14 +1,14 @@
 
 // document.getElementsByTagName('h1').style.textAlign = "center";
 
-const size = 8;
-let myMaze = labyrinths[size]["ex-2"];
+// const size = 8; Uncomment to access the mazes in the json file
+// let myMaze = labyrinths[size]["ex-2"]; Uncomment to access the mazes in the json file
 
 const root = document.documentElement;
 root.style.setProperty("--maze-size", size);
 
 document.getElementById("maze").textContent = JSON.stringify(myMaze, undefined, 2);
-document.getElementById("maze").style.display = "none";
+// document.getElementById("maze").style.display = "none";
 
 const outline = document.getElementById('outline');
 
@@ -55,6 +55,7 @@ for(let i in myMaze) {
 }
 
 
+// Uncomment to access the mazes resolutions in the json file :
 // console.log(dfs(findEntrance()))
 
 // let path = dfs(findEntrance());
@@ -62,8 +63,8 @@ for(let i in myMaze) {
 //     document.getElementById(getIndexFromPosition(p.posX, p.posY)).style.backgroundColor = "#d2fc72";
 // }
 
-let path = bfs(findEntrance());
-for(let p of path) {
-    document.getElementById(getIndexFromPosition(p.posX, p.posY)).style.backgroundColor = "#d2fc72";
-}
+// let path = bfs(findEntrance());
+// for(let p of path) {
+//     document.getElementById(getIndexFromPosition(p.posX, p.posY)).style.backgroundColor = "#d2fc72";
+// }
 
