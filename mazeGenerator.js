@@ -55,7 +55,7 @@ function digMaze() {
     if(cell.zone !== w.zone) {
         breakWall(cell, side);
         for(const it of myMaze) {
-            if(it.zone == cell.zone) {
+            if(it.zone === cell.zone) {
                 it.zone = w.zone;
 
                 // if(it.zone == cell.zone) {
@@ -63,7 +63,7 @@ function digMaze() {
                 //     it.zone = w.zone;
             }
         }
-        count--;
+        count --;
     }
 }
 
